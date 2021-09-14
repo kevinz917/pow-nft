@@ -1,21 +1,9 @@
-# Basic Sample Hardhat Project
+# DAO NFT ISSUER
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+## Problem Statement
 
-Try running some of the following tasks:
+DAOs with a large contributor base is hard to manage! Contributors have limited ways to show work on-chain and in a easily discoverable way. At the same time, onboarding new contributors is a hard problem.
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
-# pow-nft
-# pow-nft
-# pow-nft
-# pow-nft
-# pow-nft
-# pow-nft
+## Summary
+
+Here we introduce a NFT issuance contract as well as periphery membership directories. The NFT issuer (could be community nominated) reviews proposals from contributors about their past work experience. Once the issuer (or a group of issuers) goes over the work and verifies it together, potentially through voting or signing messages or via multisig, they collectively mint the NFT using the tip the contributor included and issue them. Contributor receives an NFT for their work that's showcase-able in their wallet. In the future, these work NFTs can be indexed via a subgraph to centralize the discoverability experience for DAO managers when they look for talent.
