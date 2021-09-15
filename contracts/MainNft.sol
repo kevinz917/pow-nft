@@ -44,7 +44,12 @@ contract MainNft is ERC721Enumerable, Ownable {
     return (msg.sender == ogOwners[tokenId]);
   }
 
-  function tokenURI(uint256 _tokenid) public view override returns (string memory) {
+  function tokenURI(uint256 _tokenid)
+    public
+    view
+    override
+    returns (string memory)
+  {
     return workProofs[_tokenid].tokenURI;
   }
 
