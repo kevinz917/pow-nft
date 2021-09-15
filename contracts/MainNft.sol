@@ -13,7 +13,7 @@ struct WorkProof {
 contract MainNft is ERC721Enumerable, Ownable {
   mapping(uint256 => WorkProof) public workProofs; // NFT structs containing the tokenURI
   mapping(uint256 => address) public ogOwners; // Is there a way to prevent people from transfering?
-  uint256 private _nonce; // token ID
+  uint256 public _nonce; // token ID
 
   constructor() ERC721("Kevin's Experiment", "KZ") {
     transferOwnership(msg.sender);
