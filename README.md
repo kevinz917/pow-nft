@@ -1,4 +1,4 @@
-# DAO NFT ISSUER
+# DAO CONTRIBUTION PROOF-OF-WORK NFT
 
 ## Problem Statement
 
