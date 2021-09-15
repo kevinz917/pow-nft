@@ -4,12 +4,8 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-struct WorkProof {
-  string tokenURI;
-}
-
 contract MainNft is ERC721Enumerable, Ownable {
-  mapping(uint256 => WorkProof) public workProofs; // NFT structs containing the tokenURI
+  mapping(uint256 => string) public tokenURIs; // NFT structs containing the tokenURI
   mapping(uint256 => address) public ogOwners; // Is there a way to prevent people from transfering?
   uint256 public tokenId; // nft token ID
 
@@ -23,7 +19,7 @@ contract MainNft is ERC721Enumerable, Ownable {
    * @param metadataURI: storage url containing work info
    */
   function mint(address recipient, string memory metadataURI) external payable onlyOwner {
-    workProofs[tokenId].tokenURI = metadataURI;
+    tokenURIs[tokenId] = metadataURI;
     ogOwners[tokenId] = recipient;
     _mint(recipient, tokenId);
     tokenId++;
@@ -47,6 +43,6 @@ contract MainNft is ERC721Enumerable, Ownable {
   }
 
   function tokenURI(uint256 _tokenid) public view override returns (string memory) {
-    return workProofs[_tokenid].tokenURI;
+    return tokenURIs[_tokenid];
   }
 }
