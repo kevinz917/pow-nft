@@ -4,6 +4,10 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 83682cb4c26d8c829e246a426718397f29a582e7
 
 
 contract MainNft is ERC721Enumerable, Ownable {
