@@ -4,13 +4,13 @@ const { ethers } = require("hardhat");
 const firstNftTokenURL = "https://gateway.pinata.cloud/ipfs/QmbndA7GQkjJenJrP2YjPwP9z8uuhVK5DPGftVRVcT2BfQ";
 const secondNftTokenURL = "https://gateway.pinata.cloud/ipfs/QmbndA7GQkjJenJrP2YjPwP9z8uuhVK5DPGftVRVcT2BfQ";
 
-describe("NFT Contract", function () {
+describe("NFT", function () {
   let nftContract;
   let owner;
   let addr1;
   let addr2;
 
-  it("Contract Initialization", async () => {
+  it("Initialization", async () => {
     const MainNFT = await ethers.getContractFactory("MainNft");
     nftContract = await MainNFT.deploy();
     [owner, addr1, addr2] = await ethers.getSigners();

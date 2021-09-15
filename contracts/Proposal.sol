@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./MainNft.sol";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 contract Proposal is Ownable {
     MainNft test = new MainNft();
 
@@ -62,6 +63,18 @@ contract Proposal is Ownable, MainNft {
   /** 
    * @dev Creates a proposal object with
    * @param reviewer: address of the party who reviews the proposal 
+=======
+contract Proposal is Ownable {
+  MainNft public NFT;
+
+  constructor() {
+    NFT = new MainNft();
+  }
+
+  /**
+   * @dev creates a proposal object
+   * @param reviewer: address of the party who reviews the proposal
+>>>>>>> 7e876662d273661be309c0d0394999f5563f4c60
    * @param nftID: count of the NFTs issued by the DAO (for internal book-keeping)
    * @param proposalDataURI: IPFS address of the .json containing proposal details
    * @param contributor: address of the party who submitted the proposal
@@ -73,7 +86,11 @@ contract Proposal is Ownable, MainNft {
     address contributor;
   }
 
+<<<<<<< HEAD
   uint256 public _proposalID = 0; // proposal ID: counter of submitted proposals
+=======
+  uint256 public proposalID = 0; // proposal ID: counter of submitted proposals
+>>>>>>> 7e876662d273661be309c0d0394999f5563f4c60
   mapping(uint256 => ProposalData) public Proposals; // Proposals: maps proposalID to Proposals
 
   /**
@@ -81,12 +98,17 @@ contract Proposal is Ownable, MainNft {
    * @param _proposalDataURI: IPFS address of the .json file containing proposal information
    */
   function createProposal(string memory _proposalDataURI) public virtual {
+<<<<<<< HEAD
 
     ProposalData storage newProposal = ProposalData(address(0), -1, _proposalDataURI, msg.sender);
     Proposals[_proposalID] = newProposal;
     _proposalID++;
 
     return newProposal;
+=======
+    Proposals[proposalID] = ProposalData(address(0), 0, _proposalDataURI, msg.sender);
+    proposalID++;
+>>>>>>> 7e876662d273661be309c0d0394999f5563f4c60
   }
 
   /**
@@ -94,6 +116,7 @@ contract Proposal is Ownable, MainNft {
    * @param _proposalID: index of proposal submitted
    */
   function approveProposal(uint256 _proposalID) public virtual onlyOwner {
+<<<<<<< HEAD
     
     Proposals[_proposalID].reviewer = msg.sender;
     test.mint(Proposals[_proposalID].contributor, Proposals[_proposalID].proposalDataURI);
@@ -101,4 +124,13 @@ contract Proposal is Ownable, MainNft {
 
   }
 >>>>>>> temporary fixed for imports
+=======
+    require(_proposalID <= proposalID, "Invalid proposal");
+
+    Proposals[_proposalID].reviewer = msg.sender;
+    NFT.mint(Proposals[_proposalID].contributor, Proposals[_proposalID].proposalDataURI);
+
+    Proposals[_proposalID].nftID = NFT.tokenId();
+  }
+>>>>>>> 7e876662d273661be309c0d0394999f5563f4c60
 }
