@@ -4,19 +4,17 @@ const { ethers } = require("hardhat");
 const tokenDataUrl = "https://gateway.pinata.cloud/ipfs/QmbndA7GQkjJenJrP2YjPwP9z8uuhVK5DPGftVRVcT2BfQ";
 const emptyAddress = "0x0000000000000000000000000000000000000000";
 
-describe("Proposal", function () {
+describe("Proposal", () => {
   let proposalContract;
   let nftContract;
   let owner;
   let addr1;
   let addr2;
 
-  it("Initialization", async () => {
+  before(async () => {
     const proposal = await ethers.getContractFactory("Proposal");
-
     proposalContract = await proposal.deploy();
-    nftContract = await ethers.getContractAt("MainNft", await proposalContract.NFT()); // links contract
-
+    nftContract = await ethers.getContractAt("MainNft", await proposalContract.NFT()); // fetches contract initiated within the proposal contract
     [owner, addr1, addr2] = await ethers.getSigners();
   });
 

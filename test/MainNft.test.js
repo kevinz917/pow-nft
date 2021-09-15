@@ -4,13 +4,13 @@ const { ethers } = require("hardhat");
 const firstNftTokenURL = "https://gateway.pinata.cloud/ipfs/QmbndA7GQkjJenJrP2YjPwP9z8uuhVK5DPGftVRVcT2BfQ";
 const secondNftTokenURL = "https://gateway.pinata.cloud/ipfs/QmbndA7GQkjJenJrP2YjPwP9z8uuhVK5DPGftVRVcT2BfQ";
 
-describe("NFT", function () {
+describe("NFT", () => {
   let nftContract;
   let owner;
   let addr1;
   let addr2;
 
-  it("Initialization", async () => {
+  before(async () => {
     const MainNFT = await ethers.getContractFactory("MainNft");
     nftContract = await MainNFT.deploy();
     [owner, addr1, addr2] = await ethers.getSigners();
@@ -19,16 +19,12 @@ describe("NFT", function () {
   it("Mint first NFT", async () => {
     await nftContract.mint(owner.address, firstNftTokenURL);
 
-    let count = await nftContract.balanceOf(owner.address);
-    let ogOwner = await nftContract.ogOwners(0);
-
-    assert.equal(count.toNumber(), 1);
-    assert.equal(ogOwner, owner.address);
+    expect(await nftContract.balanceOf(owner.address)).to.be.equal(1);
+    expect(await await nftContract.ogOwners(0)).to.be.equal(owner.address);
   });
 
   it("Retrieve NFT metadata", async () => {
-    let firstNFTMetadata = await nftContract.tokenURI(0);
-    assert.equal(firstNftTokenURL, firstNFTMetadata);
+    expect(await nftContract.tokenURI(0)).to.be.equal(firstNftTokenURL);
   });
 
   it("Ban Transfer ownership from owner", async () => {
