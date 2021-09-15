@@ -3,14 +3,16 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-struct WorkProof {
-  string tokenURI;
-}
+
 
 // TODO
 // Add voting system for minting work NFTs / a review system requiring multisig
 
 contract MainNft is ERC721Enumerable, Ownable {
+
+  struct WorkProof {
+      string tokenURI;
+    }
   mapping(uint256 => WorkProof) public workProofs; // NFT structs containing the tokenURI
   mapping(uint256 => address) public ogOwners; // Is there a way to prevent people from transfering?
   uint256 public _nonce; // token ID
