@@ -1,0 +1,30 @@
+.proposer-dashboard-container {
+  width: 500px;
+  margin: 50px auto;
+  padding: 24px;
+  // background-color: #fcfcfc;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 16px;
+}
+
+.proposer-dashboard-input-row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 8px;
+
+  .proposer-name-column {
+    width: 100px;
+  }
+
+  .proposer-dashboard-input-container {
+    width: 200px;
+  }
+}
+
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}

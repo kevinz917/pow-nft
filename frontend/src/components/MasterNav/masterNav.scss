@@ -1,0 +1,31 @@
+.master-nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  .master-nav-left-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .master-nav-right-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.master-nav-address-container {
+  padding: 12px 20px;
+  background-color: rgb(245, 245, 245);
+  border-radius: 32px;
+}
+
+.master-nav-link {
+  margin: 0px 20px;
+}

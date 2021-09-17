@@ -1,0 +1,33 @@
+@import "common/styles/colors.scss";
+
+.input-main {
+  padding: 10px 12px;
+  border: none;
+  font-size: 16px;
+  transition: 0.05s;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(235, 235, 235);
+  color: black;
+  border-radius: 6px;
+}
+
+.input-main:focus {
+  outline: none;
+}
+
+.input-main-caption-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.input-text-area {
+  font: inherit;
+}
+
+.input-textarea-disable-resize {
+  resize: none;
+}

@@ -1,0 +1,39 @@
+@import "common/styles/colors.scss";
+
+.button-default {
+  color: white;
+  background-color: $primary;
+  padding: 16px 20px;
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+
+  min-width: 100px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: inline-block;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-default:hover {
+  background-color: $primary-dark;
+  transition: 0.2s;
+}
+
+.button-secondary {
+  background-color: #151515 !important;
+  color: white !important;
+}
+
+.button-disabled {
+  pointer-events: none;
+  opacity: 0.3;
+  transform: none;
+}

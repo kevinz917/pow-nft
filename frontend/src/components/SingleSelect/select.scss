@@ -1,0 +1,59 @@
+@import "common/styles/colors.scss";
+
+.react-select-container {
+  font-size: 16px;
+  width: 300px;
+  border: none;
+
+  .react-select__control {
+    background: $grey500;
+    border: 1px solid $grey500;
+    color: white;
+
+    .react-select__value-container {
+      border: none;
+    }
+
+    .react-select__indicators {
+      border: none;
+    }
+  }
+
+  .react-select__control:hover {
+    border: none;
+  }
+
+  .react-select__control--is-focused {
+    border: none;
+    box-shadow: none;
+  }
+
+  .react-select__control--is-focused:hover {
+    // border-color: $grey500;
+    border: none;
+  }
+
+  .react-select__menu {
+    border: none;
+    background-color: $grey500;
+
+    .react-select__menu-list {
+      border: none;
+      .react-select__option {
+      }
+
+      .react-select__option--is-focused {
+        border: none;
+        background: $grey400;
+        color: white;
+        cursor: pointer;
+      }
+
+      .react-select__option--is-selected {
+        border: none;
+        background: $grey500;
+        color: white;
+      }
+    }
+  }
+}

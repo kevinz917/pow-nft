@@ -1,0 +1,97 @@
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: marquee 10s linear infinite;
+}
+
+// used for nav horizontal scroller
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+
+  padding-left: 100%;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+// fade animations
+.fade-in {
+  animation: fadeIn 0.9s;
+}
+
+.fade-in-long {
+  animation: fadeIn 2s;
+}
+
+.fade-in-short {
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.shake:hover {
+  animation: shake 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: rotate(-3deg);
+    // transform: translate3d(-0.5px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: rotate(6deg);
+    // transform: translate3d(1px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: rotate(-12deg);
+    // transform: translate3d(-2px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: rotate(12deg);
+    // transform: translate3d(2px, 0, 0);
+  }
+}
+
+.spin-fast {
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

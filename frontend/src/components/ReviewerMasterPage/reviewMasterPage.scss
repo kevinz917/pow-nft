@@ -1,0 +1,29 @@
+.all-proposals-container {
+  margin: 50px auto;
+  width: 500px;
+}
+
+.proposal-container {
+  border: 1px solid rgb(219, 219, 219);
+  padding: 24px;
+  border-radius: 36px;
+  margin-bottom: 16px;
+
+  .proposal-top-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .left-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .id-container {
+      width: 50px;
+    }
+  }
+}
