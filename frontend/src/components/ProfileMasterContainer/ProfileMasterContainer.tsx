@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
-import { work } from 'common/wallet/proposal';
-import { fetchOwnedNFTs } from 'common/wallet/contractHelpers';
+import { work } from 'wallet/proposal';
+import { fetchOwnedNFTs } from 'wallet/contractHelpers';
 import RenderIf from 'components/RenderIf/RenderIf';
 import Spacer from 'components/Spacer/Spacer';
 import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';

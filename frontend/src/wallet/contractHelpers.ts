@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import { resolveIPFSData } from 'common/wallet/proposal';
+import { resolveIPFSData, work } from 'wallet/proposal';
 import ProposalAbi from 'abi/Proposal.json';
 import NftAbi from 'abi/MainNft.json';
 
@@ -105,7 +105,7 @@ export const fetchNFTMetadataByIds = async (ids: number[]): Promise<any> => {
   }
 };
 
-export const fetchOwnedNFTs = async (address: string): Promise<any> => {
+export const fetchOwnedNFTs = async (address: string): Promise<work[]> => {
   try {
     const NFT: any = await NftContract();
     const count = await NFT.tokenId();
@@ -121,5 +121,6 @@ export const fetchOwnedNFTs = async (address: string): Promise<any> => {
     return allData;
   } catch (err) {
     console.log(err);
+    return [];
   }
 };

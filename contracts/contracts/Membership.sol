@@ -16,6 +16,10 @@ contract Membership is Ownable {
     transferOwnership(msg.sender);
   }
 
+  /**
+   * @dev increase random attribute
+   * @param recipient: recipient
+   */
   function increaseAttribute(address recipient) public onlyOwner {
     uint8 attributeId = _randomishIntLessThanEqualTo("nft", 4);
     uint8 number = _randomishIntLessThanEqualTo("nft", 5);
@@ -29,6 +33,11 @@ contract Membership is Ownable {
     }
   }
 
+  /**
+   * @dev generate random integer less than or equal to n
+   * @param salt: salt
+   * @param n: max number
+   */
   function _randomishIntLessThanEqualTo(bytes32 salt, uint8 n) private view returns (uint8) {
     if (n == 0) return 1;
     return (uint8(keccak256(abi.encodePacked(block.timestamp, msg.sender, salt))[0]) % n) + 1;

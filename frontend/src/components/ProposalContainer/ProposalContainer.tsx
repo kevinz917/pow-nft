@@ -3,9 +3,9 @@ import RenderIf from 'components/RenderIf/RenderIf';
 import Chevron from 'assets/svg/Chevron';
 import Spacer from 'components/Spacer/Spacer';
 import Button from 'components/Button/Button';
-import { approveProposal } from 'common/wallet/contractHelpers';
+import { approveProposal } from 'wallet/contractHelpers';
 import { trimWalletAddress } from 'components/MasterNav/MasterNav';
-import { isProposalApproved, resolveIPFSData } from 'common/wallet/proposal';
+import { isProposalApproved, resolveIPFSData } from 'wallet/proposal';
 import { proposal } from 'components/ReviewerMasterPage/ReviewerMasterPage';
 
 interface ownProps {

@@ -3,10 +3,10 @@ import ProposerMasterPage from './components/ProposerMasterPage/ProposerMasterPa
 import ReviewerMasterPage from './components/ReviewerMasterPage/ReviewerMasterPage';
 import ProfileMasterContainer from './components/ProfileMasterContainer/ProfileMasterContainer';
 
-import './common/styles/colors.scss';
-import './common/styles/typography.scss';
-import './common/styles/overall.scss';
-import './common/styles/animation.scss';
+import './styles/colors.scss';
+import './styles/typography.scss';
+import './styles/overall.scss';
+import './styles/animation.scss';
 
 import history from './components/Router/history';
 import MasterNav from 'components/MasterNav/MasterNav';

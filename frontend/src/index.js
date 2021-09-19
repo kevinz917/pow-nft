@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import MasterReducer from './redux/rootReducer';
 import createSagaMiddleware from 'redux-saga';
 import { Web3ReactProvider } from '@web3-react/core';
-import { getLibrary } from './common/wallet/initializeWallet';
+import { getLibrary } from './wallet/initializeWallet';
 
 const PROD = 'dev';
 

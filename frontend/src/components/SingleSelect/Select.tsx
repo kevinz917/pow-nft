@@ -3,7 +3,7 @@ import RenderIf from 'components/RenderIf/RenderIf';
 import { isNil } from 'lodash';
 import { PureComponent, ReactElement } from 'react';
 import ReactSelect from 'react-select';
-import { valueLabel } from '../../common/types/globalTypes';
+import { valueLabel } from '../../types/globalTypes';
 import './select.scss';
 
 interface selectOwnProps {

@@ -6,7 +6,7 @@ import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import Spacer from 'components/Spacer/Spacer';
 import RenderIf from 'components/RenderIf/RenderIf';
-import { createProposal } from 'common/wallet/contractHelpers';
+import { createProposal } from 'wallet/contractHelpers';
 import './proposerMasterPage.scss';
 
 const ProposerMasterPage = (): JSX.Element => {

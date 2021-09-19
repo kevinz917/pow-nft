@@ -2,9 +2,9 @@ import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
 import RenderIf from 'components/RenderIf/RenderIf';
 import { Link } from 'react-router-dom';
-import { injected } from 'common/wallet/initializeWallet';
+import { injected } from 'wallet/initializeWallet';
 import Button from 'components/Button/Button';
-import { useEagerConnect } from 'common/hooks/walletHooks';
+import { useEagerConnect } from 'hooks/walletHooks';
 import './masterNav.scss';
 
 export const trimWalletAddress = (handle: string): string => {
@@ -37,6 +37,7 @@ const MasterNav = (): JSX.Element => {
         <RenderIf value={!tried}>
           <div className="master-nav-address-container">Connecting ..</div>
         </RenderIf>
+
         <RenderIf value={tried}>
           <RenderIf value={active}>
             <div className="master-nav-address-container">{trimWalletAddress(account || '')}</div>
