@@ -16,6 +16,7 @@ contract Proposal is Ownable {
    */
   constructor(string[] memory _proposalDataURIs) {
     NFT = new MainNft();
+
     membership = new Membership();
 
     for (uint8 i = 0; i < _proposalDataURIs.length; i++) {
