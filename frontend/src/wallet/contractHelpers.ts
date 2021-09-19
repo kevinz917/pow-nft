@@ -6,6 +6,7 @@ import NftAbi from 'abi/MainNft.json';
 const proposalContractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3';
 const nftContractAddress = '0xa16E02E87b7454126E5E10d957A927A7F5B5d2be';
 
+// proposal contract initiator
 export const ProposalContract = async (): Promise<any> => {
   try {
     const provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
@@ -16,12 +17,25 @@ export const ProposalContract = async (): Promise<any> => {
   }
 };
 
+// nft contract initiator
 export const NftContract = async (): Promise<any> => {
   try {
     const provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
     const nftContract = new ethers.Contract(nftContractAddress, NftAbi.abi, await provider.getSigner());
     return nftContract;
   } catch (err) {
+    console.log(err);
+  }
+};
+
+export const isContractOwner = async (address: string) => {
+  try {
+    const Proposal = await ProposalContract();
+    const owner = await Proposal.owner();
+    if (owner === address) return true;
+    return false;
+  } catch (err) {
+    return false;
     console.log(err);
   }
 };
