@@ -7,6 +7,7 @@ const emptyAddress = "0x0000000000000000000000000000000000000000";
 describe("Proposal", () => {
   let proposalContract;
   let nftContract;
+  let membershipContract;
   let owner;
   let addr1;
   let addr2;
@@ -15,6 +16,8 @@ describe("Proposal", () => {
     const proposal = await ethers.getContractFactory("Proposal");
     proposalContract = await proposal.deploy([tokenDataUrl, tokenDataUrl]);
     nftContract = await ethers.getContractAt("MainNft", await proposalContract.NFT()); // fetches contract initiated within the proposal contract
+    membershipContract = await ethers.getContractAt("Membership", await proposalContract.membership());
+
     [owner, addr1, addr2] = await ethers.getSigners();
   });
 
@@ -39,6 +42,9 @@ describe("Proposal", () => {
 
     expect(await proposalContract.NFT()).to.be.equal(nftContract.address);
     expect(await nftContract.tokenId()).to.be.equal(1);
+
+    const character = await membershipContract.characters(owner.address);
+    assert.equal(character.swag > 0 || character.strength > 0 || character.speed > 0, true);
   });
 
   it("Check NFT", async () => {

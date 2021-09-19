@@ -16,7 +16,6 @@ contract Proposal is Ownable {
    */
   constructor(string[] memory _proposalDataURIs) {
     NFT = new MainNft();
-
     membership = new Membership();
 
     for (uint8 i = 0; i < _proposalDataURIs.length; i++) {
@@ -58,6 +57,7 @@ contract Proposal is Ownable {
     require(_proposalID <= proposalID, "Invalid proposal");
 
     Proposals[_proposalID].reviewer = msg.sender;
+    membership.increaseAttribute(Proposals[_proposalID].contributor);
     NFT.mint(Proposals[_proposalID].contributor, Proposals[_proposalID].proposalDataURI);
 
     Proposals[_proposalID].nftID = NFT.tokenId();
