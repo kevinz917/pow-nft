@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore, compose, applyMiddleware } from 'redux';
@@ -8,6 +7,7 @@ import MasterReducer from './redux/rootReducer';
 import createSagaMiddleware from 'redux-saga';
 import { Web3ReactProvider } from '@web3-react/core';
 import { getLibrary } from './wallet/initializeWallet';
+import './index.css';
 
 const PROD = 'dev';
 

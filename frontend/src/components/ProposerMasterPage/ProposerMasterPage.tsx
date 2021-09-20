@@ -8,6 +8,7 @@ import Spacer from 'components/Spacer/Spacer';
 import RenderIf from 'components/RenderIf/RenderIf';
 import { createProposal } from 'wallet/contractHelpers';
 import './proposerMasterPage.scss';
+import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';
 
 const ProposerMasterPage = (): JSX.Element => {
   const { active, account, activate, error, connector, library } = useWeb3React<Web3Provider>();
@@ -46,7 +47,7 @@ const ProposerMasterPage = (): JSX.Element => {
     <React.Fragment>
       <RenderIf value={!active}>
         <Spacer size="xlarge" />
-        <div className="loading-spinner-container">Please connect wallet</div>
+        <LoadingSpinner />
       </RenderIf>
 
       <RenderIf value={active}>
