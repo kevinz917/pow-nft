@@ -20,7 +20,7 @@ contract Proposal is Ownable {
    * @param contributor: address of the party who submitted the proposal
    */
   struct ProposalData {
-    address reviewer;
+    address[] reviewers;
     uint256 nftID;
     string proposalDataURI;
     address contributor;
@@ -28,13 +28,14 @@ contract Proposal is Ownable {
 
   uint256 public proposalID = 0; // proposal ID: counter of submitted proposals
   mapping(uint256 => ProposalData) public Proposals; // Proposals: maps proposalID to Proposals
+  mapping(uint256 => mapping(address => bool)) public Approvals; // Approvals: maps proposalID to list of addresses to approval status
 
   /**
    * @dev creates a proposal object with the appropriate metadata; called by the proposer
    * @param _proposalDataURI: IPFS address of the .json file containing proposal information
    */
-  function createProposal(string memory _proposalDataURI) public virtual {
-    Proposals[proposalID] = ProposalData(address(0), 0, _proposalDataURI, msg.sender);
+  function createProposal(string memory _proposalDataURI, address[] memory reviewers) public virtual {
+    Proposals[proposalID] = ProposalData(reviewers, 0, _proposalDataURI, msg.sender);
     proposalID++;
   }
 
@@ -45,9 +46,23 @@ contract Proposal is Ownable {
   function approveProposal(uint256 _proposalID) public virtual onlyOwner {
     require(_proposalID <= proposalID, "Invalid proposal");
 
-    Proposals[_proposalID].reviewer = msg.sender;
-    NFT.mint(Proposals[_proposalID].contributor, Proposals[_proposalID].proposalDataURI);
+    for(uint i=0; i < 3; i++){
+      if (Proposals[_proposalID].reviewers[i] == msg.sender){
+        Approvals[_proposalID][msg.sender] == true;
+      }
+    }
 
-    Proposals[_proposalID].nftID = NFT.tokenId();
+    bool allApproved = true;
+    for(uint i=0; i < 3; i++){
+      address reviewer = Proposals[_proposalID].reviewers[i];
+      if (!Approvals[_proposalID][reviewer]){
+        allApproved = false;
+      }
+    }
+
+    if(allApproved){
+      NFT.mint(Proposals[_proposalID].contributor, Proposals[_proposalID].proposalDataURI);
+      Proposals[_proposalID].nftID = NFT.tokenId();
+    }
   }
 }

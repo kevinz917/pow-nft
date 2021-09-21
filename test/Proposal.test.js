@@ -19,22 +19,30 @@ describe("Proposal", () => {
   });
 
   it("Create proposal", async () => {
-    await proposalContract.createProposal(tokenDataUrl);
+    const reviewers = [owner.address, addr1.address, addr2.address];
+    await proposalContract.createProposal(tokenDataUrl, reviewers);
 
     expect(await proposalContract.proposalID()).to.be.equal(1);
 
     const firstProposalData = await proposalContract.Proposals(0);
     assert.equal(firstProposalData.proposalDataURI, tokenDataUrl);
     assert.equal(firstProposalData.nftID, 0);
-    assert.equal(firstProposalData.reviewer, emptyAddress);
+    assert.equal(firstProposalData.reviewers, [owner.address, addr1.address, addr2.address]);
     assert.equal(firstProposalData.contributor, owner.address);
   });
 
   it("Approve proposal", async () => {
+    //Define reviewers before we can approve proposal
+    const reviewers = [owner.address, addr1.address, addr2.address];
+    await proposalContract.createProposal(tokenDataUrl, reviewers);
+
+
     await proposalContract.approveProposal(0);
 
+    const approvals = await proposalContract.Approvals(0);
     const firstProposalData = await proposalContract.Proposals(0);
-    assert.equal(firstProposalData.reviewer, owner.address);
+    assert.equal(firstProposalData.reviewers, [owner.address, addr1.address, addr2.address]);
+    assert.equal(approvals[0], true);
     assert.equal(firstProposalData.nftID, 1);
 
     expect(await proposalContract.NFT()).to.be.equal(nftContract.address);
