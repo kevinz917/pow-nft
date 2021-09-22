@@ -1,4 +1,4 @@
-# DAO CONTRIBUTION PROOF-OF-WORK NFT
+# DAO Contribution Proof-Of-Work NFT 🦍
 
 ## Problem Statement
 
